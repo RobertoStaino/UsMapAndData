@@ -11,7 +11,7 @@ library(shiny)
 #library(dplyr)
 #library(ggplot2)
 library(tidyverse)
-#library(maps)
+library(maps)
 #library(mapproj)
 
 options(scipen=999)
