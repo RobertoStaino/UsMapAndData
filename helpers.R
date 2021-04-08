@@ -1,3 +1,5 @@
+state <- as_tibble(read.csv(file = 'data/state.csv', header = TRUE, sep = ","))
+state <- state[state$region != "district of columbia",]
 custom_map <- function (data, var, name, color){
   if(name == "Party share" || name == "Mid Term Election") {
     mean <- 50
