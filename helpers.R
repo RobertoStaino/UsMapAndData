@@ -1,5 +1,21 @@
-state <- as_tibble(map_data("state")) 
+dataset <- read.csv(file = 'data/us_election.csv', header = TRUE, sep = ";")
+
+# slight fix for column name "year"
+colnames(dataset)[1] <- "year"
+dataset$states <- tolower(dataset$states)
+
+
+state <- as_tibble(map_data("state"))    
+join_state <- state %>%
+    left_join(dataset, by = c("region" = "states"))
+
+# remove district of columbia region
 state <- state[state$region != "district of columbia",]
+join_state <- join_state[join_state$region != "district of columbia",]
+dataset <- dataset[dataset$states != "district of columbia",]
+
+#state <- as_tibble(map_data("state")) 
+#state <- state[state$region != "district of columbia",]
 custom_map <- function (data, var, name, color){
   if(name == "Party share" || name == "Mid Term Election") {
     mean <- 50
