@@ -16,8 +16,6 @@ library(tidyverse)
 
 options(scipen=999)
 
-source("helpers.R")
-
 dataset <- read.csv(file = 'data/us_election.csv', header = TRUE, sep = ";")
 
 # slight fix for column name "year"
@@ -33,6 +31,8 @@ join_state <- state %>%
 state <- state[state$region != "district of columbia",]
 join_state <- join_state[join_state$region != "district of columbia",]
 dataset <- dataset[dataset$states != "district of columbia",]
+
+source("helpers.R")
 
 # Define UI for application that draws a histogram
 ui <- navbarPage("R Project: US Elections & data",
