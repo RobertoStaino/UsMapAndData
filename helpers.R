@@ -1,4 +1,4 @@
-state<-as_tibble(map_data("state")) 
+state <- as_tibble(map_data("state")) 
 state <- state[state$region != "district of columbia",]
 custom_map <- function (data, var, name, color){
   if(name == "Party share" || name == "Mid Term Election") {
