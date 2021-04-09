@@ -8,8 +8,8 @@
 #
 
 library(shiny)
-library(tidyverse)
 library(plotly)
+library(tidyverse)
 library(parallel)
 
 options(scipen=999)
