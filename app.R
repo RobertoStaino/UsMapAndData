@@ -13,7 +13,7 @@ library(tidyverse)
 library(parallel)
 
 options(scipen=999)
-#options(warn = -1)
+options(warn = -1)
 
 source("helpers.R")
 
