@@ -5,8 +5,7 @@ colnames(dataset)[1] <- "year"
 dataset$states <- tolower(dataset$states)
 
 
-# state<-as_tibble(map_data("state"))    DEPRECATED for GitHub
-state <- as_tibble(read.csv(file = 'data/state.csv', header = TRUE, sep = ","))
+state<-as_tibble(map_data("state"))    
 join_state <- state %>%
   left_join(dataset, by = c("region" = "states"))
 
