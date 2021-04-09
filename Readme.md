@@ -10,7 +10,7 @@ data presented with this project are mainly the ones gathered from the
 exam of Microeconometrics, each variable is described in the chapter
 *Variables*.
 
-Use runGitHub("RobertoStaino/UsMapAndData") on R to run the app.
+Use `runGitHub("RobertoStaino/UsMapAndData")` on R to run the app.
 
 ## The App
 
