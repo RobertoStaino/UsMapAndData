@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 This code has been written for the midterm exam on R of *Coding for Data Science*. The aim is to build a **Shiny App**, so that a user interface is generated and the client can change the data shown to its wishes. 
 The data presented with this project are mainly the ones gathered from the exam of Microeconometrics, each variable is described in the chapter *Variables*. 
 
+Use `runGitHub("RobertoStaino/UsMapAndData")` on R to run the app.
+
 ## The App
 
 The Shiny App built is divided into three main pages. 
