@@ -8,14 +8,12 @@
 #
 
 library(shiny)
-#library(dplyr)
-#library(ggplot2)
 library(tidyverse)
-#library(maps)
-#library(mapproj)
+library(plotly)
 library(parallel)
 
 options(scipen=999)
+options(warn = -1)
 
 source("helpers.R")
 
@@ -66,11 +64,11 @@ ui <- navbarPage("R Project: US Elections & data",
                      checkboxGroupInput("stategroup", label = h3("States"), 
                                         #choices = unique(join_state$region),
                                         choices = regions,
-                                        selected = c("california","texas"))
+                                        selected = regions)
                  ),
                  
                  # Show a plot of the generated distribution
-                 mainPanel(plotOutput("plot"), height = "auto")
+                 mainPanel(plotlyOutput("plot"), height = "auto")
              )        
     )
 )
@@ -78,9 +76,9 @@ ui <- navbarPage("R Project: US Elections & data",
 # Define server logic required to draw a histogram
 server <- function(input, output) {
     
-    output$plot <- renderPlot({
+    output$plot <- renderPlotly({
         d <- subset(dataset, dataset$year == input$year1 & dataset$states %in% input$stategroup)
-        y <- switch(input$var1, 
+        Value <- switch(input$var1, 
                     "Party share" = d$share_d,
                     "Real GDP chained to 2012" = d$real_gdp,
                     "Population" = d$population,
@@ -93,8 +91,12 @@ server <- function(input, output) {
                     "Midterm Election" = d$new_midterm,
                     "Number of Great Electors" = d$Great_El)
             
+        State <- input$stategroup
         
-        ggplot(d, aes(input$stategroup, y)) + geom_bar(stat = "identity", color = "violetred", fill = "mistyrose1") + labs(x = "States", y = input$var1) + coord_flip() + geom_text(aes(label=round(y, digits = 2)), hjust = "inward", color="black") + theme_minimal()
+        plot <- ggplot(d, aes(State, Value)) + geom_bar(stat = "identity", color = "violetred", fill = "mistyrose1") + labs(x = "States", y = input$var1) + coord_flip()  + theme_minimal()
+        #+ geom_text(aes(label=round(y, digits = 2)), hjust = "inward", color="black") 
+            
+        ggplotly(plot, height = 1500)
     })
     
     output$electoralmap <- renderPlot({
@@ -137,4 +139,3 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
-
