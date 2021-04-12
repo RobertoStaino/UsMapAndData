@@ -94,7 +94,7 @@ server <- function(input, output) {
             
         State <- input$stategroup
         
-        plot <- ggplot(d, aes(State, Value)) + geom_bar(stat = "identity", color = "violetred", fill = "mistyrose1") + labs(x = "States", y = input$var1) + coord_flip()  + theme_minimal()
+        plot <- ggplot(d, aes(reorder(State, -value), Value)) + geom_bar(stat = "identity", color = "violetred", fill = "mistyrose1") + labs(x = "States", y = input$var1) + coord_flip()  + theme_minimal()
         #+ geom_text(aes(label=round(y, digits = 2)), hjust = "inward", color="black") 
             
         ggplotly(plot, height = 1500)
