@@ -10,6 +10,7 @@
 library(shiny)
 library(plotly)
 library(tidyverse)
+library(mapproj)
 library(parallel)
 
 options(scipen=999)
