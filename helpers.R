@@ -1,3 +1,10 @@
+pkg_loading <- function(){
+  if(!require('pacman'))install.packages('pacman')
+  pacman::p_load(shiny,tidyverse,mapproj,plotly,parallel)
+}
+
+pkg_loading()
+
 dataset <- read.csv(file = 'data/us_election.csv', header = TRUE, sep = ";")
 
 # slight fix for column name "year"
