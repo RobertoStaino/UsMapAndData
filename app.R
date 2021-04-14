@@ -7,16 +7,16 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
-library(plotly)
-library(tidyverse)
-library(mapproj)
-library(parallel)
-
 options(scipen=999)
 options(warn = -1)
 
 source("helpers.R")
+
+#library(shiny)
+#library(tidyverse)
+#library(plotly)
+#library(mapproj)
+#library(parallel)
 
 # Define UI for application that draws a histogram
 ui <- navbarPage("R Project: US Elections & data",
